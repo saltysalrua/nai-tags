@@ -12,27 +12,28 @@
     <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
   </head>
   <body>
-    <header class="page-header">
-      <div class="header-content">
-        <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
-        <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
-        {% if site.github.is_project_page %}
-        <a href="{{ site.github.repository_url }}" class="btn">查看 GitHub</a>
-        {% endif %}
-        {% if site.show_downloads %}
-        <a href="{{ site.github.zip_url }}" class="btn">下载 .zip</a>
-        <a href="{{ site.github.tar_url }}" class="btn">下载 .tar.gz</a>
-        {% endif %}
-      </div>
-    </header>
+    <!-- 移除原有的header section -->
+    
+    <!-- 悬浮导航按钮 -->
+    <div id="floating-nav-button">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
     <div class="container">
+      <!-- 侧边栏，默认隐藏 -->
       <div class="sidebar" id="sidebar">
         <div class="sidebar-content">
+          <div class="sidebar-header">
+            <h3>{{ site.title | default: site.github.repository_name }}</h3>
+            <button id="close-sidebar">×</button>
+          </div>
           <div id="toc-container"></div>
         </div>
       </div>
       
+      <!-- 页面内容，现在占据全宽 -->
       <main id="content" class="main-content" role="main">
         {{ content }}
         
@@ -65,35 +66,33 @@
           var tocLinks = sidebarToc.getElementsByTagName('a');
           for (var i = 0; i < tocLinks.length; i++) {
             tocLinks[i].addEventListener('click', function(e) {
-              // 移动设备上点击导航链接后收起侧边栏
-              if (window.innerWidth < 768) {
-                document.body.classList.remove('sidebar-open');
-              }
+              // 点击导航链接后收起侧边栏
+              document.body.classList.remove('sidebar-open');
             });
           }
         }
         
-        // 移动端菜单开关
-        var menuToggle = document.createElement('div');
-        menuToggle.id = 'menu-toggle';
-        menuToggle.innerHTML = '<span></span><span></span><span></span>';
-        document.querySelector('.header-content').appendChild(menuToggle);
-        
-        menuToggle.addEventListener('click', function() {
+        // 悬浮导航按钮点击事件
+        var floatingNavButton = document.getElementById('floating-nav-button');
+        floatingNavButton.addEventListener('click', function() {
           document.body.classList.toggle('sidebar-open');
         });
         
-        // 添加响应式调整
-        function adjustLayout() {
-          if (window.innerWidth < 768) {
+        // 关闭侧边栏按钮点击事件
+        var closeSidebarButton = document.getElementById('close-sidebar');
+        if (closeSidebarButton) {
+          closeSidebarButton.addEventListener('click', function() {
             document.body.classList.remove('sidebar-open');
-          } else {
-            document.body.classList.add('sidebar-open');
-          }
+          });
         }
         
-        window.addEventListener('resize', adjustLayout);
-        adjustLayout();
+        // 点击内容区域关闭侧边栏
+        var mainContent = document.getElementById('content');
+        mainContent.addEventListener('click', function(e) {
+          if (document.body.classList.contains('sidebar-open')) {
+            document.body.classList.remove('sidebar-open');
+          }
+        });
         
         // 添加滚动高亮
         function highlightToc() {
@@ -129,4 +128,12 @@
               }
             }
           }
-  
+        }
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', highlightToc);
+        highlightToc();
+      });
+    </script>
+  </body>
+</html>
