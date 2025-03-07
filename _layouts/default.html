@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/custom-structure.css?v=" | append: site.github.build_revision | relative_url }}">
     {% if site.favicon %}
     <link rel="icon" type="image/x-icon" href="{{ site.favicon }}">
     {% endif %}
@@ -44,6 +45,7 @@
       </main>
     </div>
 
+    <script src="{{ "/assets/js/copy-code.js" | relative_url }}"></script>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         // 提取目录并移动到侧边栏
@@ -95,6 +97,8 @@
         
         // 添加滚动高亮
         function highlightToc() {
+          if (!sidebarToc) return;
+          
           var headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
           var tocLinks = sidebarToc.getElementsByTagName('a');
           var scrollPosition = window.scrollY;
@@ -125,167 +129,4 @@
               }
             }
           }
-        }
-        
-        window.addEventListener('scroll', highlightToc);
-        highlightToc();
-      });
-    </script>
-    
-    <style>
-      /* 布局样式 */
-      body {
-        display: flex;
-        flex-direction: column;
-        padding: 0;
-        margin: 0;
-        min-height: 100vh;
-      }
-      
-      .page-header {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-      }
-      
-      .header-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-        position: relative;
-      }
-      
-      .container {
-        display: flex;
-        flex: 1;
-        max-width: 1200px;
-        margin: 0 auto;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-      }
-      
-      .sidebar {
-        width: 250px;
-        flex-shrink: 0;
-        margin-right: 20px;
-        display: none;
-      }
-      
-      .sidebar-content {
-        position: sticky;
-        top: 20px;
-        background: white;
-        border-radius: 8px;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-        padding: 20px;
-        max-height: calc(100vh - 40px);
-        overflow-y: auto;
-      }
-      
-      .main-content {
-        flex: 1;
-        max-width: 100%;
-        margin: 0;
-      }
-      
-      body.sidebar-open .sidebar {
-        display: block;
-      }
-      
-      /* 菜单开关 */
-      #menu-toggle {
-        display: none;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        flex-direction: column;
-        justify-content: space-between;
-        padding: 5px;
-      }
-      
-      #menu-toggle span {
-        height: 3px;
-        width: 100%;
-        background-color: white;
-        border-radius: 2px;
-        display: block;
-        transition: all 0.3s ease;
-      }
-      
-      /* 侧边栏目录样式 */
-      #toc-container h3 {
-        margin-top: 0;
-        margin-bottom: 15px;
-        padding-bottom: 10px;
-        border-bottom: 1px solid #eaecef;
-      }
-      
-      #toc-container ul {
-        list-style-type: none;
-        padding-left: 10px;
-        margin: 0;
-      }
-      
-      #toc-container li {
-        margin: 8px 0;
-        font-size: 14px;
-        line-height: 1.4;
-      }
-      
-      #toc-container a {
-        display: block;
-        padding: 3px 5px;
-        border-radius: 3px;
-        text-decoration: none;
-        color: #333;
-        transition: all 0.2s ease;
-        border-left: 2px solid transparent;
-      }
-      
-      #toc-container a:hover,
-      #toc-container a.active {
-        background-color: #f1f8ff;
-        color: #0366d6;
-        border-left: 2px solid #0366d6;
-      }
-      
-      /* 响应式设计 */
-      @media screen and (max-width: 768px) {
-        .container {
-          flex-direction: column;
-          padding: 10px;
-        }
-        
-        #menu-toggle {
-          display: flex;
-        }
-        
-        .sidebar {
-          width: 100%;
-          margin-right: 0;
-          margin-bottom: 20px;
-        }
-        
-        .main-content {
-          padding: 20px !important;
-        }
-        
-        body.sidebar-open #menu-toggle span:nth-child(1) {
-          transform: translateY(8px) rotate(45deg);
-        }
-        
-        body.sidebar-open #menu-toggle span:nth-child(2) {
-          opacity: 0;
-        }
-        
-        body.sidebar-open #menu-toggle span:nth-child(3) {
-          transform: translateY(-8px) rotate(-45deg);
-        }
-      }
-    </style>
-  </body>
-</html>
+  
