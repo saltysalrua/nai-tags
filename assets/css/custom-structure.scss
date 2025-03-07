@@ -1,139 +1,325 @@
-<!DOCTYPE html>
-<html lang="{{ site.lang | default: "en-US" }}">
-  <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
-    <link rel="stylesheet" href="{{ "/assets/css/custom-structure.css?v=" | append: site.github.build_revision | relative_url }}">
-    {% if site.favicon %}
-    <link rel="icon" type="image/x-icon" href="{{ site.favicon }}">
-    {% endif %}
-    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
-  </head>
-  <body>
-    <!-- 移除原有的header section -->
-    
-    <!-- 悬浮导航按钮 -->
-    <div id="floating-nav-button">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+---
+---
 
-    <div class="container">
-      <!-- 侧边栏，默认隐藏 -->
-      <div class="sidebar" id="sidebar">
-        <div class="sidebar-content">
-          <div class="sidebar-header">
-            <h3>{{ site.title | default: site.github.repository_name }}</h3>
-            <button id="close-sidebar">×</button>
-          </div>
-          <div id="toc-container"></div>
-        </div>
-      </div>
-      
-      <!-- 页面内容，现在占据全宽 -->
-      <main id="content" class="main-content" role="main">
-        {{ content }}
-        
-        <footer class="site-footer">
-          {% if site.github.is_project_page %}
-          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> 由 <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> 维护.</span>
-          {% endif %}
-          <span class="site-footer-credits">此页面使用 <a href="https://pages.github.com">GitHub Pages</a> 生成.</span>
-        </footer>
-      </main>
-    </div>
+@import "{{ site.theme }}";
 
-    <script src="{{ "/assets/js/copy-code.js" | relative_url }}"></script>
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // 提取目录并移动到侧边栏
-        var tocList = document.getElementById('markdown-toc');
-        var sidebarToc = document.getElementById('toc-container');
-        
-        if (tocList && sidebarToc) {
-          // 创建标题
-          var tocTitle = document.createElement('h3');
-          tocTitle.textContent = '文档目录';
-          sidebarToc.appendChild(tocTitle);
-          
-          // 移动目录到侧边栏
-          sidebarToc.appendChild(tocList.cloneNode(true));
-          
-          // 为目录项添加点击事件
-          var tocLinks = sidebarToc.getElementsByTagName('a');
-          for (var i = 0; i < tocLinks.length; i++) {
-            tocLinks[i].addEventListener('click', function(e) {
-              // 点击导航链接后收起侧边栏
-              document.body.classList.remove('sidebar-open');
-            });
-          }
-        }
-        
-        // 悬浮导航按钮点击事件
-        var floatingNavButton = document.getElementById('floating-nav-button');
-        floatingNavButton.addEventListener('click', function() {
-          document.body.classList.toggle('sidebar-open');
-        });
-        
-        // 关闭侧边栏按钮点击事件
-        var closeSidebarButton = document.getElementById('close-sidebar');
-        if (closeSidebarButton) {
-          closeSidebarButton.addEventListener('click', function() {
-            document.body.classList.remove('sidebar-open');
-          });
-        }
-        
-        // 点击内容区域关闭侧边栏
-        var mainContent = document.getElementById('content');
-        mainContent.addEventListener('click', function(e) {
-          if (document.body.classList.contains('sidebar-open')) {
-            document.body.classList.remove('sidebar-open');
-          }
-        });
-        
-        // 添加滚动高亮
-        function highlightToc() {
-          if (!sidebarToc) return;
-          
-          var headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-          var tocLinks = sidebarToc.getElementsByTagName('a');
-          var scrollPosition = window.scrollY;
-          
-          // 找到当前可见的最顶部标题
-          var currentHeading = null;
-          
-          for (var i = 0; i < headings.length; i++) {
-            var heading = headings[i];
-            if (heading.offsetTop <= scrollPosition + 100) {
-              currentHeading = heading;
-            } else {
-              break;
-            }
-          }
-          
-          // 清除所有高亮
-          for (var i = 0; i < tocLinks.length; i++) {
-            tocLinks[i].classList.remove('active');
-          }
-          
-          // 高亮当前标题
-          if (currentHeading) {
-            var id = currentHeading.id;
-            for (var i = 0; i < tocLinks.length; i++) {
-              if (tocLinks[i].getAttribute('href') === '#' + id) {
-                tocLinks[i].classList.add('active');
-              }
-            }
-          }
-        }
-        
-        // 监听滚动事件
-        window.addEventListener('scroll', highlightToc);
-        highlightToc();
-      });
-    </script>
-  </body>
-</html>
+/* ===== 基础样式继承自上一个样式表 ===== */
+
+/* ===== 自定义结构样式 ===== */
+
+/* 一级描述（列表项）样式 */
+.main-content ul li, 
+.main-content ol li {
+  margin-bottom: 1.8rem;
+  position: relative;
+  padding-left: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.main-content ul li:hover,
+.main-content ol li:hover {
+  transform: translateX(5px);
+}
+
+/* 让列表前的符号更醒目 */
+.main-content ul {
+  list-style-type: none;
+}
+
+.main-content ul li::before {
+  content: "➤";
+  color: #4f8fee;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.2em;
+  margin-left: -1.2em;
+  transition: all 0.3s ease;
+}
+
+.main-content ul li:hover::before {
+  color: #ff6b6b;
+  transform: scale(1.2);
+}
+
+/* 二级描述（引用块）样式 - 有复制按钮 */
+.main-content blockquote {
+  background-color: #f8f9fa;
+  border-left: 4px solid #4f8fee;
+  padding: 1.2rem 2.5rem 1.2rem 1.2rem; /* 右侧留出空间给复制按钮 */
+  margin: 1.2rem 0 1.8rem 0;
+  border-radius: 0 8px 8px 0;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+  font-size: 0.95rem;
+}
+
+.main-content blockquote:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left-width: 6px;
+  background-color: #f0f4f8;
+}
+
+/* 二级描述中的代码样式 */
+.main-content blockquote code {
+  display: block;
+  background-color: #f0f2f5;
+  padding: 0.8rem;
+  border-radius: 5px;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9rem;
+  color: #476582;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-right: 32px; /* 为复制按钮留出空间 */
+}
+
+/* 复制按钮样式 */
+.copy-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
+  background-color: #e1e4e8;
+  border: none;
+  border-radius: 50%; /* 圆形按钮 */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: all 0.25s ease;
+  z-index: 5;
+}
+
+.copy-btn:hover {
+  background-color: #4f8fee;
+  opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(79, 143, 238, 0.4);
+}
+
+.copy-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: #476582;
+  transition: all 0.2s ease;
+}
+
+.copy-btn:hover svg {
+  fill: white;
+}
+
+/* 复制成功反馈 */
+.copy-btn.success {
+  background-color: #28a745;
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.4);
+}
+
+.copy-btn.success svg {
+  fill: white;
+}
+
+/* 标题样式优化 */
+.main-content h2,
+.main-content h3 {
+  margin-top: 2.8rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid #eaecef;
+  position: relative;
+  font-weight: 600;
+}
+
+.main-content h2::after,
+.main-content h3::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(90deg, #4f8fee, #82b1ff);
+  border-radius: 3px;
+}
+
+.main-content h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.main-content h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+/* 让标题有动画效果 */
+.main-content h2:hover::after,
+.main-content h3:hover::after {
+  width: 100%;
+  transition: width 0.5s ease;
+}
+
+/* 图片样式优化 */
+.main-content img {
+  display: block;
+  max-width: 100%;
+  margin: 1.8rem 0;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.35s ease;
+  border: 3px solid transparent;
+}
+
+.main-content img:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  border-color: rgba(79, 143, 238, 0.3);
+}
+
+/* 特殊卡片布局 - 为您的一级描述+二级描述+图片组合创建卡片视图 */
+.description-item {
+  margin-bottom: 2.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
+  background-color: white;
+}
+
+.description-item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+.description-item .primary-desc {
+  padding: 1.2rem 1.2rem 0.8rem 1.2rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eaecef;
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.description-item .secondary-desc {
+  padding: 1.2rem;
+  margin: 0;
+  border-left: none;
+  border-radius: 0;
+  background-color: white;
+  position: relative;
+}
+
+.description-item .image-container {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.description-item .image-container img {
+  margin: 0;
+  max-width: 100%;
+  transition: all 0.5s ease;
+}
+
+.description-item:hover .image-container img {
+  transform: scale(1.03);
+}
+
+/* 命令行风格的引用块样式 (一个替代选项) */
+.main-content blockquote.command-style {
+  background-color: #2b2b2b;
+  color: #f0f0f0;
+  border-left: 4px solid #ff6b6b;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  padding: 1rem 2.5rem 1rem 1rem;
+  position: relative;
+}
+
+.main-content blockquote.command-style::before {
+  content: "$";
+  color: #ff6b6b;
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  font-weight: bold;
+}
+
+.main-content blockquote.command-style p {
+  margin-left: 18px;
+  color: #f0f0f0;
+}
+
+/* 移动端优化 */
+@media screen and (max-width: 768px) {
+  .copy-btn {
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+  }
+  
+  .main-content blockquote {
+    padding: 1rem 2rem 1rem 1rem;
+  }
+  
+  .main-content blockquote code {
+    padding: 0.6rem;
+    font-size: 0.85rem;
+    margin-right: 24px;
+  }
+  
+  .main-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .main-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .description-item .primary-desc {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .description-item .secondary-desc {
+    padding: 1rem;
+  }
+}
+
+/* 动态强调特效 */
+@keyframes highlight {
+  0% { background-color: rgba(79, 143, 238, 0.1); }
+  50% { background-color: rgba(79, 143, 238, 0.2); }
+  100% { background-color: rgba(79, 143, 238, 0.1); }
+}
+
+.highlight-item {
+  animation: highlight 2s infinite;
+  border-radius: 6px;
+}
+
+/* 打印优化 */
+@media print {
+  .copy-btn {
+    display: none;
+  }
+  
+  .main-content blockquote {
+    background-color: #f8f9fa !important;
+    border: 1px solid #eaecef;
+    box-shadow: none;
+  }
+  
+  .main-content img {
+    max-width: 80%;
+    box-shadow: none;
+    border: 1px solid #eaecef;
+  }
+}
