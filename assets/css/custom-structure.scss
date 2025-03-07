@@ -10,19 +10,55 @@
 /* 一级描述（列表项）样式 */
 .main-content ul li, 
 .main-content ol li {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.8rem;
   position: relative;
   padding-left: 0.5rem;
+  transition: all 0.3s ease;
 }
 
-/* 二级描述（引用块）样式 */
+.main-content ul li:hover,
+.main-content ol li:hover {
+  transform: translateX(5px);
+}
+
+/* 让列表前的符号更醒目 */
+.main-content ul {
+  list-style-type: none;
+}
+
+.main-content ul li::before {
+  content: "➤";
+  color: #4f8fee;
+  font-weight: bold;
+  display: inline-block;
+  width: 1.2em;
+  margin-left: -1.2em;
+  transition: all 0.3s ease;
+}
+
+.main-content ul li:hover::before {
+  color: #ff6b6b;
+  transform: scale(1.2);
+}
+
+/* 二级描述（引用块）样式 - 有复制按钮 */
 .main-content blockquote {
-  background-color: #f6f8fa;
+  background-color: #f8f9fa;
   border-left: 4px solid #4f8fee;
-  padding: 1rem;
-  margin: 1rem 0 1.5rem 0;
-  border-radius: 0 6px 6px 0;
+  padding: 1.2rem 2.5rem 1.2rem 1.2rem; /* 右侧留出空间给复制按钮 */
+  margin: 1.2rem 0 1.8rem 0;
+  border-radius: 0 8px 8px 0;
   position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  font-family: "SF Mono", "Segoe UI Mono", "Roboto Mono", Menlo, Courier, monospace;
+  font-size: 0.95rem;
+}
+
+.main-content blockquote:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-left-width: 6px;
+  background-color: #f0f4f8;
 }
 
 /* 二级描述中的代码样式 */
@@ -43,29 +79,32 @@
 /* 复制按钮样式 */
 .copy-btn {
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  width: 28px;
-  height: 28px;
+  top: 8px;
+  right: 8px;
+  width: 32px;
+  height: 32px;
   background-color: #e1e4e8;
   border: none;
-  border-radius: 4px;
+  border-radius: 50%; /* 圆形按钮 */
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0.7;
-  transition: all 0.2s ease;
+  opacity: 0.8;
+  transition: all 0.25s ease;
+  z-index: 5;
 }
 
 .copy-btn:hover {
   background-color: #4f8fee;
   opacity: 1;
+  transform: scale(1.1);
+  box-shadow: 0 2px 6px rgba(79, 143, 238, 0.4);
 }
 
 .copy-btn svg {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   fill: #476582;
   transition: all 0.2s ease;
 }
@@ -77,6 +116,8 @@
 /* 复制成功反馈 */
 .copy-btn.success {
   background-color: #28a745;
+  transform: scale(1.15);
+  box-shadow: 0 2px 8px rgba(40, 167, 69, 0.4);
 }
 
 .copy-btn.success svg {
@@ -86,11 +127,12 @@
 /* 标题样式优化 */
 .main-content h2,
 .main-content h3 {
-  margin-top: 2.5rem;
-  margin-bottom: 1.5rem;
-  padding-bottom: 0.5rem;
+  margin-top: 2.8rem;
+  margin-bottom: 1.8rem;
+  padding-bottom: 0.6rem;
   border-bottom: 1px solid #eaecef;
   position: relative;
+  font-weight: 600;
 }
 
 .main-content h2::after,
@@ -99,85 +141,185 @@
   position: absolute;
   bottom: -1px;
   left: 0;
-  width: 100px;
+  width: 120px;
   height: 3px;
   background: linear-gradient(90deg, #4f8fee, #82b1ff);
   border-radius: 3px;
+}
+
+.main-content h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+}
+
+.main-content h3 {
+  font-size: 1.5rem;
+  color: #34495e;
+}
+
+/* 让标题有动画效果 */
+.main-content h2:hover::after,
+.main-content h3:hover::after {
+  width: 100%;
+  transition: width 0.5s ease;
 }
 
 /* 图片样式优化 */
 .main-content img {
   display: block;
   max-width: 100%;
-  margin: 1.5rem 0;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
+  margin: 1.8rem 0;
+  border-radius: 10px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.35s ease;
+  border: 3px solid transparent;
 }
 
 .main-content img:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.15);
+  border-color: rgba(79, 143, 238, 0.3);
 }
 
-/* 标签式卡片布局 */
-.description-card {
-  margin-bottom: 2rem;
-  border: 1px solid #eaecef;
-  border-radius: 8px;
+/* 特殊卡片布局 - 为您的一级描述+二级描述+图片组合创建卡片视图 */
+.description-item {
+  margin-bottom: 2.5rem;
+  border: 1px solid #e9ecef;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.description-card:hover {
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-}
-
-.description-card .primary-desc {
-  padding: 1rem;
-  background-color: #f8f9fa;
-  border-bottom: 1px solid #eaecef;
-  font-weight: 500;
-}
-
-.description-card .secondary-desc {
-  padding: 0;
-  margin: 0;
-  border-left: none;
-  border-radius: 0;
-}
-
-.description-card .secondary-desc code {
-  margin: 0;
-  border-radius: 0;
-}
-
-.description-card .card-image {
-  padding: 1rem;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.35s ease;
   background-color: white;
 }
 
-.description-card .card-image img {
+.description-item:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-5px);
+}
+
+.description-item .primary-desc {
+  padding: 1.2rem 1.2rem 0.8rem 1.2rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #eaecef;
+  font-weight: 500;
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+.description-item .secondary-desc {
+  padding: 1.2rem;
   margin: 0;
+  border-left: none;
+  border-radius: 0;
+  background-color: white;
+  position: relative;
+}
+
+.description-item .image-container {
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.description-item .image-container img {
+  margin: 0;
+  max-width: 100%;
+  transition: all 0.5s ease;
+}
+
+.description-item:hover .image-container img {
+  transform: scale(1.03);
+}
+
+/* 命令行风格的引用块样式 (一个替代选项) */
+.main-content blockquote.command-style {
+  background-color: #2b2b2b;
+  color: #f0f0f0;
+  border-left: 4px solid #ff6b6b;
+  font-family: 'SFMono-Regular', Consolas, monospace;
+  padding: 1rem 2.5rem 1rem 1rem;
+  position: relative;
+}
+
+.main-content blockquote.command-style::before {
+  content: "$";
+  color: #ff6b6b;
+  position: absolute;
+  left: 10px;
+  top: 14px;
+  font-weight: bold;
+}
+
+.main-content blockquote.command-style p {
+  margin-left: 18px;
+  color: #f0f0f0;
 }
 
 /* 移动端优化 */
 @media screen and (max-width: 768px) {
   .copy-btn {
-    top: 0.5rem;
-    right: 0.5rem;
-    width: 24px;
-    height: 24px;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
   }
   
   .main-content blockquote {
-    padding: 0.8rem;
+    padding: 1rem 2rem 1rem 1rem;
   }
   
   .main-content blockquote code {
     padding: 0.6rem;
     font-size: 0.85rem;
     margin-right: 24px;
+  }
+  
+  .main-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .main-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .description-item .primary-desc {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+  
+  .description-item .secondary-desc {
+    padding: 1rem;
+  }
+}
+
+/* 动态强调特效 */
+@keyframes highlight {
+  0% { background-color: rgba(79, 143, 238, 0.1); }
+  50% { background-color: rgba(79, 143, 238, 0.2); }
+  100% { background-color: rgba(79, 143, 238, 0.1); }
+}
+
+.highlight-item {
+  animation: highlight 2s infinite;
+  border-radius: 6px;
+}
+
+/* 打印优化 */
+@media print {
+  .copy-btn {
+    display: none;
+  }
+  
+  .main-content blockquote {
+    background-color: #f8f9fa !important;
+    border: 1px solid #eaecef;
+    box-shadow: none;
+  }
+  
+  .main-content img {
+    max-width: 80%;
+    box-shadow: none;
+    border: 1px solid #eaecef;
   }
 }
