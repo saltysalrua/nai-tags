@@ -1,14 +1,46 @@
-# 站点基本配置
-title: 我的文档站点
-description: 基于Markdown标题的目录结构
+# 站点基本信息
+title: 我的文档网站        # 修改为您的网站标题
+description: Markdown文档展示  # 修改为您的网站描述
+lang: zh-CN               # 设置语言为中文
 
-# 使用简单主题
-theme: jekyll-theme-cayman  # 也可以使用其他主题
+# 主题设置 - 使用默认主题或自定义主题
+theme: jekyll-theme-cayman  # 可使用其他主题如：jekyll-theme-minimal
 
-# 开启标题锚点
-kramdown:
-  auto_ids: true
-
-# 其他有用设置
+# 布局和样式设置
 markdown: kramdown
+kramdown:
+  auto_ids: true          # 为标题自动生成ID（用于目录）
+  toc_levels: 2..3        # 目录生成的标题级别范围
+
+# 代码高亮
 highlighter: rouge
+syntax_highlighter_opts:
+  block:
+    line_numbers: false   # 不显示行号
+    start_line: 1
+
+# 路径设置
+sass:
+  sass_dir: assets/css    # 指定SCSS/SASS文件位置
+  style: compressed       # 压缩生成的CSS
+
+# 输出设置
+permalink: pretty         # 生成漂亮的URL结构
+
+# GitHub Pages设置
+github:
+  is_project_page: false  # 如果这是项目网站，设为true
+  show_downloads: false   # 不显示下载按钮
+
+# 包含以下划线开头的文件夹（如果需要）
+include:
+  - _res                  # 如果您决定保留原始文件夹名
+
+# 插件和扩展 - GitHub Pages支持有限的插件
+plugins:
+  - jekyll-seo-tag        # SEO优化
+
+# 自定义变量 - 可以在模板中使用
+custom:
+  enable_copy_buttons: true  # 是否启用复制按钮
+  enable_card_layout: false  # 是否启用卡片布局
