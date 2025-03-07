@@ -1,4 +1,17 @@
+---
+layout: default
+title: 色色法典
+---
+
 # Salty的NAI4法典(色色版)
+
+{: .no_toc }
+
+## 目录
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
 
 ## 组件
 - `stomach bulge,`肚子突出肉棒形状
