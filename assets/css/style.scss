@@ -1,0 +1,55 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+// 目录样式优化
+#markdown-toc {
+  background: #f8f9fa;
+  border: 1px solid #eaecef;
+  border-radius: 3px;
+  padding: 1em;
+  margin-bottom: 2em;
+  list-style-position: inside;
+}
+
+#markdown-toc li {
+  margin: 0.3em 0;
+}
+
+// 目录中的嵌套列表
+#markdown-toc ul {
+  padding-left: 1.5em;
+}
+
+// 标题锚点样式
+.header-link {
+  color: #1756a9;
+  font-weight: normal;
+  font-size: 0.8em;
+  vertical-align: middle;
+}
+
+// 图片样式
+img {
+  max-width: 100%;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+  margin: 1em 0;
+}
+
+// 正文区域
+.main-content {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+// 章节标题样式
+h1 {
+  border-bottom: 2px solid #eaecef;
+  padding-bottom: 0.3em;
+}
+
+h2 {
+  border-bottom: 1px solid #eaecef;
+  padding-bottom: 0.2em;
+}
