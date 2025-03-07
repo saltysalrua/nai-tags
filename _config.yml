@@ -43,4 +43,4 @@ plugins:
 # 自定义变量 - 可以在模板中使用
 custom:
   enable_copy_buttons: true  # 是否启用复制按钮
-  enable_card_layout: false  # 是否启用卡片布局
+  enable_card_layout: true  # 是否启用卡片布局
