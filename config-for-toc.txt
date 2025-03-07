@@ -1,0 +1,14 @@
+# 站点基本配置
+title: 我的文档站点
+description: 基于Markdown标题的目录结构
+
+# 使用简单主题
+theme: jekyll-theme-cayman  # 也可以使用其他主题
+
+# 开启标题锚点
+kramdown:
+  auto_ids: true
+
+# 其他有用设置
+markdown: kramdown
+highlighter: rouge
