@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <link rel="stylesheet" href="{{ "/assets/css/custom-structure.css?v=" | append: site.github.build_revision | relative_url }}">
+    {% if site.favicon %}
+    <link rel="icon" type="image/x-icon" href="{{ site.favicon }}">
+    {% endif %}
+    <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title | default: site.github.repository_name }}</title>
+  </head>
+  <body>
+    <header class="page-header">
+      <div class="header-content">
+        <!-- 原来的大标题已被样式表隐藏，并用CSS的content属性替代 -->
+        <h1 class="project-name">{{ site.title | default: site.github.repository_name }}</h1>
+        <h2 class="project-tagline">{{ site.description | default: site.github.project_tagline }}</h2>
+        {% if site.github.is_project_page %}
+        <a href="{{ site.github.repository_url }}" class="btn">查看 GitHub</a>
+        {% endif %}
+        {% if site.show_downloads %}
+        <a href="{{ site.github.zip_url }}" class="btn">下载 .zip</a>
+        <a href="{{ site.github.tar_url }}" class="btn">下载 .tar.gz</a>
+        {% endif %}
+      </div>
+    </header>
+
+    <!-- 悬浮菜单按钮 -->
+    <div id="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    
+    <!-- 侧边栏遮罩层 -->
+    <div class="sidebar-overlay"></div>
+
+    <div class="container">
+      <div class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+          <div id="toc-container"></div>
+        </div>
+      </div>
+      
+      <main id="content" class="main-content" role="main">
+        {{ content }}
+        
+        <footer class="site-footer">
+          {% if site.github.is_project_page %}
+          <span class="site-footer-owner"><a href="{{ site.github.repository_url }}">{{ site.github.repository_name }}</a> 由 <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a> 维护.</span>
+          {% endif %}
+          <span class="site-footer-credits">此页面使用 <a href="https://pages.github.com">GitHub Pages</a> 生成.</span>
+        </footer>
+      </main>
+    </div>
+
+    <script src="{{ "/assets/js/copy-code.js" | relative_url }}"></script>    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        // 提取目录并移动到侧边栏
+        var tocList = document.getElementById('markdown-toc');
+        var sidebarToc = document.getElementById('toc-container');
+        
+        if (tocList && sidebarToc) {
+          // 创建标题
+          var tocTitle = document.createElement('h3');
+          tocTitle.textContent = '文档目录';
+          sidebarToc.appendChild(tocTitle);
+          
+          // 移动目录到侧边栏
+          sidebarToc.appendChild(tocList.cloneNode(true));
+          
+          // 为目录项添加点击事件
+          var tocLinks = sidebarToc.getElementsByTagName('a');
+          for (var i = 0; i < tocLinks.length; i++) {
+            tocLinks[i].addEventListener('click', function(e) {
+              // 点击导航链接后收起侧边栏
+              document.body.classList.remove('sidebar-open');
+            });
+          }
+        }
+        
+        // 设置菜单开关事件
+        var menuToggle = document.getElementById('menu-toggle');
+        var sidebarOverlay = document.querySelector('.sidebar-overlay');
+        
+        menuToggle.addEventListener('click', function() {
+          document.body.classList.toggle('sidebar-open');
+        });
+        
+        // 点击遮罩层关闭侧边栏
+        sidebarOverlay.addEventListener('click', function() {
+          document.body.classList.remove('sidebar-open');
+        });
+        
+        // 添加滚动高亮
+        function highlightToc() {
+          if (!sidebarToc) return;
+          
+          var headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+          var tocLinks = sidebarToc.getElementsByTagName('a');
+          var scrollPosition = window.scrollY;
+          
+          // 找到当前可见的最顶部标题
+          var currentHeading = null;
+          
+          for (var i = 0; i < headings.length; i++) {
+            var heading = headings[i];
+            if (heading.offsetTop <= scrollPosition + 100) {
+              currentHeading = heading;
+            } else {
+              break;
+            }
+          }
+          
+          // 清除所有高亮
+          for (var i = 0; i < tocLinks.length; i++) {
+            tocLinks[i].classList.remove('active');
+          }
+          
+          // 高亮当前标题
+          if (currentHeading) {
+            var id = currentHeading.id;
+            for (var i = 0; i < tocLinks.length; i++) {
+              if (tocLinks[i].getAttribute('href') === '#' + id) {
+                tocLinks[i].classList.add('active');
+              }
+            }
+          }
+        }
+        
+        // 监听滚动事件以高亮当前目录项
+        window.addEventListener('scroll', highlightToc);
+        highlightToc();
+        
+        // 初始时关闭侧边栏（在移动设备上）
+        if (window.innerWidth < 768) {
+          document.body.classList.remove('sidebar-open');
+        } else {
+          // 在桌面端默认不展开侧边栏
+          document.body.classList.remove('sidebar-open');
+        }
+      });
+    </script>
+  </body>
+</html>
