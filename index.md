@@ -18,10 +18,16 @@ title: 色色法典
 - `public hair`阴毛
 - `ahegao`高潮脸
 - `straight-on`正面视角
-- 
+- `faceless man`无脸男
+- `head out-of-frame`头出框
 ## 杂项
 - 和肉棒合影
-> `The boy is standing behind the girl, with his penis on the right side of the girl,huge penis,boy's head out of frame,Girl standing and holding penis, making peace pose with left hand`
+- (初版)  
+> `1girl,1boy,The boy is standing behind the girl, with his penis on the right side of the girl,huge penis,boy's head out of frame,Girl standing and holding penis, making peace pose with left hand`
+- (新版)  
+> `1girl,1boy,The boy is standing behind the girl, with his penis on the right side of the girl,{{huge penis}},boy's head out of frame,Girl standing and hugging penis, making peace pose with left hand,`
+- 录像界面
+> `recording,text in up right ,text:rec`
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-3404827486](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-3404827486.png)
 
 - 背后抓胸
@@ -151,6 +157,7 @@ title: 色色法典
 
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-1339860341](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-1339860341.png)
 
+### 传教士
 - 普通传教士
 >`1boy,1girl,leg grab,blush,steaming body,lying,missionary,on back,on bed,sex,sheet grab,spread legs,sweat,`
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-2013580588](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-2013580588.png)
@@ -163,6 +170,7 @@ title: 色色法典
 >`1girl,1boy,arm grab,assisted rape,blush,from above,held down,holding another's wrist,looking at viewer,uncensored,penis,pov,pov crotch,pov hands,pussy,rape,restrained,sex,solo focus,spread legs,tears,vaginal,`
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-1979954610](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-1979954610.png)
 
+### 非传教士
 - 站立性交
 >`cowboy shot,1girl,1boy,from side,sex,{standing missionary,face-to-face},hug,hand on another's waist,penis out,speed lines,penis`
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-3925751368](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-3925751368.png)
@@ -179,6 +187,25 @@ title: 色色法典
 >`1boy,1girl,clothing aside,cum in pussy,grabbing another's breast,,leg lift,panties aside,sex from behind,standing,standing on one leg,`
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-3330508319](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-3330508319.png)
 
+- 种付位  
+>`1girl,1boy,pussy,anus,ass ripple,cum in ass,  cum in pussy,cum overflow,deep penetration,  huge ass,large penis,large testicles,lying,  mating press,soles on feet,on back,rape,sex,  trembling`
+![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-2364162582](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-2364162582.png)
+
+- 抱姿火车便当
+>`1girl,1boy,spread legs,{reverse suspended congress},carrying,leg grab,open mouth, pussy,sex from behind,sweat,vaginal,`
++`spread pussy,`掰穴
++`penis on pussy`插穴
++`anus,anal sex`插肛
+![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-2484401746](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-2484401746.png)
+
+- 69式(横屏比较容易出)
+> `1boy,1girl,{{69}},ass,fellatio,deepthroat,lying on back,cunnilingus,huge penis,from side`
+![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-2901374013](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-2901374013.png)
+
+- 骑乘位
+> `1girl,1boy,nude,penis ,pussy ,grinding,straddling,bed,looking at another,leaning forward,girl on top,lying,cum,{sex}`
+![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-643480427](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-643480427.png)
+### 后入
 - 后入
 >`1girl,1boy,penis,ass,vaginal,on stomach,sex from behind,blush,lying,top-down bottom-up,sheet grab,`  
   +`boy's hand on girl's head,head grab,`按头
@@ -186,7 +213,11 @@ title: 色色法典
   +`pov,pov crotch,pov hands`第一人称
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-3064441432](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-3064441432.png)
 
+- 玩手机后入
+>`1girl,1boy,bored,Girl lying prone on the bed, upper body slightly raised, supporting herself with both hands on the mattress, focused on her phone,boy sex from behind`
+![{artist_omochi monaka},[[[artist_omutatsu]]],[[[[[artist_fenrir (fenriluuu)]]]]] s-3653014726](_res/{artist_omochi%20monaka},[[[artist_omutatsu]]],[[[[[artist_fenrir%20(fenriluuu)]]]]]%20s-3653014726.png)
 
+### 肛交
 - 自抱腿肛交
 >`blush,tears,looking at viewer,large penis,anal sex,penis in anus,anal penis insertion,nude,pussy,pussy juice,anus,sweat,steaming body,girl hugging own legs up,`
 ![omochi monaka,healthyman,kyuumura,[[[fenfir (fenriluuu)]]],[[[[[omutatsu]]]]],ye s-1111477112](_res/omochi%20monaka,healthyman,kyuumura,[[[fenfir%20(fenriluuu)]]],[[[[[omutatsu]]]]],ye%20s-1111477112.png)
