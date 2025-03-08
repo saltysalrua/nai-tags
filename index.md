@@ -1,20 +1,4 @@
----
-layout: default
-title: 色色法典
----
-
-# Salty的NAI4法典(色色版)
-
-{: .no_toc }
-
-## 目录
-{: .no_toc .text-delta }
-
-1. TOC
-{:toc}
-
-## 组件
-- `stomach bulge,`肚子突出肉棒形状
+![45776](_res/45776.png)7137](_res/2626677137.png)ge,`肚子突出肉棒形状
 - `public hair`阴毛
 - `ahegao`高潮脸
 - `straight-on`正面视角
@@ -189,22 +173,23 @@ title: 色色法典
 
 - 种付位  
 >`1girl,1boy,pussy,anus,ass ripple,cum in ass,  cum in pussy,cum overflow,deep penetration,  huge ass,large penis,large testicles,lying,  mating press,soles on feet,on back,rape,sex,  trembling`
-![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-2364162582](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-2364162582.png)
+![45776](_res/45776.png)
 
 - 抱姿火车便当
 >`1girl,1boy,spread legs,{reverse suspended congress},carrying,leg grab,open mouth, pussy,sex from behind,sweat,vaginal,`
 +`spread pussy,`掰穴
 +`penis on pussy`插穴
 +`anus,anal sex`插肛
-![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-2484401746](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-2484401746.png)
+![666](_res/666.png)
 
 - 69式(横屏比较容易出)
 > `1boy,1girl,{{69}},ass,fellatio,deepthroat,lying on back,cunnilingus,huge penis,from side`
-![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-2901374013](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-2901374013.png)
+![136](_res/136.png)
 
 - 骑乘位
 > `1girl,1boy,nude,penis ,pussy ,grinding,straddling,bed,looking at another,leaning forward,girl on top,lying,cum,{sex}`
-![{{artist_omochi monaka}},[[[[[[[artist_fenrir (fenriluuu)]]]]]]],artist_omutat s-643480427](_res/{{artist_omochi%20monaka}},[[[[[[[artist_fenrir%20(fenriluuu)]]]]]]],[[artist_omutat%20s-643480427.png)
+![12](_res/12.png)
+
 ### 后入
 - 后入
 >`1girl,1boy,penis,ass,vaginal,on stomach,sex from behind,blush,lying,top-down bottom-up,sheet grab,`  
