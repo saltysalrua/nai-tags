@@ -4,40 +4,177 @@ document.addEventListener('DOMContentLoaded', function() {
     // 获取所有图片元素
     const images = document.querySelectorAll('img');
     
+    // 记录已处理过的图片，避免重复处理
+    const processedImages = new Set();
+    
+    // 为每个图片添加加载状态标记
     images.forEach(function(img) {
-      // 检查图片是否已加载
-      if (!img.complete || img.naturalHeight === 0) {
-        // 获取原始src和alt
-        const originalSrc = img.getAttribute('src');
-        const altText = img.getAttribute('alt');
+      if (processedImages.has(img)) return;
+      
+      const originalSrc = img.getAttribute('src');
+      // 仅处理_res目录下的图片
+      if (originalSrc && originalSrc.includes('_res/')) {
+        processedImages.add(img);
         
-        // 仅处理_res目录下的图片
-        if (originalSrc && originalSrc.includes('_res/')) {
-          console.log('修复图片路径:', originalSrc);
-          
-          // 尝试不同的编码方式
-          // 方案1: 根据alt文本构建简化的文件名
-          let fixedSrc = '_res/' + encodeURIComponent(altText.split(',')[0].trim()) + '.png';
-          
-          // 设置一个备用图片，如果修复失败则显示
-          img.onerror = function() {
-            console.log('图片加载失败:', fixedSrc);
-            // 显示图片加载失败提示
-            this.onerror = null; // 防止循环触发
-            this.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="200" height="150" viewBox="0 0 200 150"><rect width="200" height="150" fill="#f8f9fa"/><text x="50%" y="50%" font-family="sans-serif" font-size="14" text-anchor="middle">图片加载失败</text></svg>');
-            this.style.border = '1px dashed #ccc';
-            this.style.padding = '10px';
-          };
-          
-          // 尝试修复的路径
-          img.src = fixedSrc;
-        }
+        // 标记图片状态
+        img.setAttribute('data-loading-status', 'pending');
+        
+        // 设置较长的加载超时时间
+        const loadTimeout = setTimeout(function() {
+          // 只有在图片仍在加载且没有成功的情况下才尝试修复
+          if ((!img.complete || img.naturalHeight === 0) && img.getAttribute('data-loading-status') === 'pending') {
+            attemptImageFix(img);
+          }
+        }, 8000); // 延长到8秒，给网络加载更多时间
+        
+        // 图片加载成功时清除超时并标记状态
+        img.onload = function() {
+          clearTimeout(loadTimeout);
+          img.setAttribute('data-loading-status', 'loaded');
+          // 添加成功加载的类，可用于样式处理
+          img.classList.add('image-loaded');
+        };
+        
+        // 图片加载失败时尝试修复
+        img.onerror = function() {
+          clearTimeout(loadTimeout);
+          // 只有在状态为pending时才尝试修复，避免重复处理
+          if (img.getAttribute('data-loading-status') === 'pending') {
+            attemptImageFix(img);
+          }
+        };
       }
+    });
+  }
+  
+  // 尝试修复图片加载问题
+  function attemptImageFix(img) {
+    // 获取原始路径和alt文本
+    const originalSrc = img.getAttribute('src');
+    const altText = img.getAttribute('alt') || '图片';
+    console.log('尝试修复图片:', originalSrc);
+    
+    // 标记为正在尝试修复
+    img.setAttribute('data-loading-status', 'fixing');
+    
+    // 添加重试按钮UI
+    const imgParent = img.parentNode;
+    const retryWrapper = document.createElement('div');
+    retryWrapper.className = 'image-retry-wrapper';
+    retryWrapper.innerHTML = `
+      <div class="image-error">
+        <div class="image-error-icon">&#9888;</div>
+        <div class="image-error-text">图片加载中断</div>
+        <div class="image-error-filename">${altText}</div>
+        <button class="retry-button">重试加载</button>
+      </div>
+    `;
+    
+    // 替换图片为重试UI
+    imgParent.replaceChild(retryWrapper, img);
+    
+    // 添加重试按钮事件
+    const retryButton = retryWrapper.querySelector('.retry-button');
+    retryButton.addEventListener('click', function() {
+      // 更改状态提示
+      const errorText = retryWrapper.querySelector('.image-error-text');
+      errorText.textContent = '正在重新加载...';
+      
+      // 准备新的图片元素
+      const newImg = document.createElement('img');
+      newImg.alt = altText;
+      
+      // 尝试不同的编码方式创建修复后的URL
+      let fixedSrc = '';
+      
+      // 方案1: 使用原始路径但重新加载
+      if (originalSrc.includes('_res/')) {
+        fixedSrc = originalSrc + '?t=' + new Date().getTime(); // 添加时间戳避免缓存
+      }
+      
+      // 方案2: 根据alt文本构建简化文件名
+      if (!fixedSrc || retryButton.getAttribute('data-retry-count') > 0) {
+        fixedSrc = '_res/' + encodeURIComponent(altText.split(',')[0].trim()) + '.png';
+      }
+      
+      // 设置重试计数
+      const retryCount = parseInt(retryButton.getAttribute('data-retry-count') || '0');
+      retryButton.setAttribute('data-retry-count', (retryCount + 1).toString());
+      
+      // 设置新图片的加载和错误处理
+      newImg.onload = function() {
+        retryWrapper.parentNode.replaceChild(newImg, retryWrapper);
+        newImg.classList.add('image-loaded');
+      };
+      
+      newImg.onerror = function() {
+        errorText.textContent = '图片加载失败';
+        retryButton.textContent = '再次重试';
+        // 如果重试次数超过3次，提供更多信息
+        if (retryCount >= 3) {
+          const infoElement = document.createElement('div');
+          infoElement.className = 'image-error-help';
+          infoElement.textContent = '多次重试失败，可能是网络问题或图片不存在';
+          retryWrapper.querySelector('.image-error').appendChild(infoElement);
+        }
+      };
+      
+      // 设置src开始加载
+      newImg.src = fixedSrc;
     });
   }
 
   // 延迟执行，确保DOM完全加载
-  setTimeout(fixImagePaths, 1000);
+  setTimeout(fixImagePaths, 3000); // 延迟3秒，给初始加载更多时间
+  
+  // 添加页面加载指示器
+  function addPageLoadIndicator() {
+    const loadIndicator = document.createElement('div');
+    loadIndicator.className = 'page-load-indicator';
+    loadIndicator.innerHTML = `
+      <div class="loading-spinner"></div>
+      <div class="loading-text">正在加载图片资源，请稍候...</div>
+    `;
+    document.body.appendChild(loadIndicator);
+    
+    // 当所有图片都加载完成或者超时后隐藏指示器
+    const hideTimeout = setTimeout(() => {
+      loadIndicator.style.opacity = '0';
+      setTimeout(() => loadIndicator.remove(), 1000);
+    }, 15000); // 15秒后无论如何都隐藏
+    
+    // 监听所有图片加载完成
+    window.addEventListener('load', function() {
+      clearTimeout(hideTimeout);
+      loadIndicator.style.opacity = '0';
+      setTimeout(() => loadIndicator.remove(), 1000);
+    });
+  }
+  
+  // 图片加载状态检查
+  function checkAllImagesStatus() {
+    const images = document.querySelectorAll('img');
+    const totalImages = images.length;
+    let loadedImages = 0;
+    
+    images.forEach(img => {
+      if (img.complete) loadedImages++;
+    });
+    
+    const loadingProgress = document.querySelector('.loading-text');
+    if (loadingProgress) {
+      loadingProgress.textContent = `正在加载图片资源 (${loadedImages}/${totalImages})`;
+    }
+    
+    // 继续检查直到所有图片加载完成
+    if (loadedImages < totalImages) {
+      setTimeout(checkAllImagesStatus, 500);
+    }
+  }
+  
+  // 添加加载指示器并开始检查
+  addPageLoadIndicator();
+  setTimeout(checkAllImagesStatus, 1000);
   
   // 添加一个图片预览功能
   function addImagePreviewFeature() {
