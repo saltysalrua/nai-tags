@@ -44,3 +44,6 @@ plugins:
 custom:
   enable_copy_buttons: true  # 是否启用复制按钮
   enable_card_layout: true  # 是否启用卡片布局
+
+include:
+  - _res
