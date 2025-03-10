@@ -1,4 +1,20 @@
-![45776](_res/45776.png)7137](_res/2626677137.png)ge,`肚子突出肉棒形状
+---
+layout: default
+title: 色色法典
+---
+
+# Salty的NAI4法典(色色版)
+
+{: .no_toc }
+
+## 目录
+{: .no_toc .text-delta }
+
+1. TOC
+{:toc}
+
+## 组件
+- `stomach bulge,`肚子突出肉棒形状
 - `public hair`阴毛
 - `ahegao`高潮脸
 - `straight-on`正面视角
@@ -176,7 +192,7 @@
 ![45776](_res/45776.png)
 
 - 抱姿火车便当
->`1girl,1boy,spread legs,{reverse suspended congress},carrying,leg grab,open mouth, pussy,sex from behind,sweat,vaginal,`
+>`1girl,1boy,spread legs,{reverse suspended congress},carrying,  leg grab,open mouth, pussy,sex from behind,sweat,vaginal,`
 +`spread pussy,`掰穴
 +`penis on pussy`插穴
 +`anus,anal sex`插肛
@@ -189,6 +205,18 @@
 - 骑乘位
 > `1girl,1boy,nude,penis ,pussy ,grinding,straddling,bed,looking at another,leaning forward,girl on top,lying,cum,{sex}`
 ![12](_res/12.png)
+
+- 睡衣懒腰骑乘位
+> `half closed eyes,open shirt,sleeping,steaming body,wet,girl on top,sex,hetero,see-through,stretching,white shirt,navel,sitting,naked shirt,open mouth,arms up,cum,cumdrip,barefoot,yawning,trembling legs,indoors,long sleeves,bottomless,bed sheet,unbuttoned,on bed,stomach,clothed female nude male,`
+![46464](_res/46464.png)
+
+- 爆炒骑乘位
+> `1girl,{out-of-frame censoring},sex,indoor,spasm,unaligned breasts,bouncing breasts,speed line,ahegao,`
+![235](_res/235.png)
+
+- 第一人称骑乘位
+> `pov,sex,cowgirl position,penis,pussy,nud,from below,wet skin,cowboy shot,nipples,half closed eyes,arm support,`
+![4646767](_res/4646767.png)
 
 ### 后入
 - 后入
